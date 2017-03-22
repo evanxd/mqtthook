@@ -6,5 +6,5 @@ var mqtthook = new MQTThook('mqtt://test.mosquitto.org');
 mqtthook.hook('hooked-topic')
   .if((data) => { return data.pm2_5 > 70 })
   .trigger((data) => {
-    console.log(`PM2.5: ${data.pm2_5}`);
+    console.log('PM2.5 is very high!');
   });
