@@ -8,13 +8,13 @@ var MQTThook = require('mqtthook');
 var mqtthook = new MQTThook('mqtt://test.mosquitto.org');
 ```
 
-Trigger a [WebHook][webhook] which will store the data in a [Google Sheets][google-sheets] sheet when a hooked MQTT topic received real-time PM2.5 data.
+Trigger a [WebHook][webhook] which will store the data in a [Google Sheets][google-sheets] sheet when a hooked MQTT topic received the PM2.5 data.
 ```js
 mqtthook.hook('hooked-topic')
   .trigger('https://webhook.fake/hooks/3345678', { pm2_5: 'pm2_5' });
 ```
 
-Trigger a `function` to print the real-time PM2.5 data on the console when a hooked MQTT topic received the data.
+Trigger a `function` to print the PM2.5 data on the console when a hooked MQTT topic received the data.
 ```js
 mqtthook.hook('hooked-topic')
   .trigger((data) => { console.log(`PM2.5: ${data.pm2_5}`); });
