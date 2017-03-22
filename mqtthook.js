@@ -4,11 +4,13 @@ var mqtt = require('mqtt');
 
 function MQTThook (brokerUrl, options) {
   this._triggers = {};
+  var client;
   this._promise = new Promise((resolve, reject) => {
-    this._mqttClient = mqtt.connect(brokerUrl, options);
-    this._mqttClient.on('connect', () => { resolve(); });
+    client = mqtt.connect(brokerUrl, options);
+    client.on('connect', () => { resolve(); });
+    this._mqttClient = client;
   });
-  this._mqttClient.on('message', (topic, message) => {
+  client.on('message', (topic, message) => {
     var triggers = this._triggers;
     try {
       var data = JSON.parse(message.toString());
@@ -40,11 +42,12 @@ MQTThook.prototype = {
   },
 
   if: function(callback) {
+    var triggers = this._triggers;
     this._promise = this._promise.then((mqttTopic) => {
       return new Promise((resolve, reject) => {
         if (typeof callback === 'function') {
-          this._triggers[mqttTopic] = this._triggers[mqttTopic] || {};
-          this._triggers[mqttTopic].if = callback;
+          triggers[mqttTopic] = triggers[mqttTopic] || {};
+          triggers[mqttTopic].if = callback;
         }
         resolve(mqttTopic);
       });
@@ -53,11 +56,12 @@ MQTThook.prototype = {
   },
 
   trigger: function(callback) {
+    var triggers = this._triggers;
     this._promise = this._promise.then((mqttTopic) => {
       return new Promise((resolve) => {
         if (typeof callback === 'function') {
-          this._triggers[mqttTopic] = this._triggers[mqttTopic] || {};
-          this._triggers[mqttTopic].trigger = callback;
+          triggers[mqttTopic] = triggers[mqttTopic] || {};
+          triggers[mqttTopic].trigger = callback;
         }
         resolve();
       });
