@@ -1,0 +1,24 @@
+{
+  "name": "mqtthook",
+  "description": "It is a MQTT version of Webhook for IoT devices.",
+  "version": "0.0.0",
+  "author": {
+    "name": "Evan Tseng",
+    "email": "evan@tseng.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evanxd/mqtthook"
+  },
+  "keywords": [
+    "iot",
+    "internet-of-things",
+    "mqtt",
+    "wot",
+    "web-of-things",
+    "webhook"
+  ],
+  "dependencies": {
+    "mqtt": "2.5.0"
+  }
+}
