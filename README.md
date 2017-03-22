@@ -11,6 +11,7 @@ var mqtthook = new MQTThook('mqtt://test.mosquitto.org');
 Trigger a [WebHook][webhook] which will store the data in a [Google Sheets][google-sheets] sheet when a hooked MQTT topic received the PM2.5 data.
 ```js
 mqtthook.hook('hooked-topic')
+  .if(function(data) { return data.pm2_5 > 70 })
   .trigger('https://webhook.fake/hooks/3345678', { pm2_5: 'pm2_5' });
 ```
 
