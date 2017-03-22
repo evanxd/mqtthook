@@ -3,7 +3,7 @@ It is a [MQTT][mqtt] version of [Webhook][webhook] for IoT devices. It helps MQT
 
 ## How-to
 Run the below command to listen the `hooked-topic` topic to trigger the callback function. If the PM2.5 data bigger than 70 then print `PM2.5 is very high!` on the console.
-```
+```sh
 node index.js
 ```
 
