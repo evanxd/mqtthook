@@ -17,8 +17,8 @@ var mqtthook = new MQTThook('mqtt://test.mosquitto.org');
 Trigger a callback `function` to print the PM2.5 data on the console when a hooked MQTT topic received the data.
 ```js
 mqtthook.hook('hooked-topic')
-  .if((data) => { return data.pm2_5 > 70 })
-  .trigger((data) => { console.log(`PM2.5: ${data.pm2_5}`); });
+  .if(data => { return data.pm2_5 > 70 })
+  .trigger(data => { console.log(`PM2.5: ${data.pm2_5}`); });
 ```
 
 ## Reference
