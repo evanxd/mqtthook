@@ -8,7 +8,7 @@ var MQTThook = require('mqtthook');
 var mqtthook = new MQTThook('mqtt://test.mosquitto.org');
 ```
 
-Trigger a [WebHook][webhook] which will store the data in a [Google Sheets][google-sheets] sheet when a hooked MQTT topic received the PM2.5 data.
+Trigger a [WebHook][webhook] which will send a message to a Slack channel when a hooked MQTT topic received the PM2.5 value is bigger than 70.
 ```js
 mqtthook.hook('hooked-topic')
   .if((data) => { return data.pm2_5 > 70 })
