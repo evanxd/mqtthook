@@ -14,6 +14,7 @@
     "iot",
     "internet-of-things",
     "mqtt",
+    "mqtthook",
     "wot",
     "web-of-things",
     "webhook"
