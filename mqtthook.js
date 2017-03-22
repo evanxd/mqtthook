@@ -3,12 +3,11 @@
 var mqtt = require('mqtt');
 
 function MQTThook (brokerUrl, options) {
+  var client = mqtt.connect(brokerUrl, options);
+  this._mqttClient = client;
   this._triggers = {};
-  var client;
   this._promise = new Promise((resolve, reject) => {
-    client = mqtt.connect(brokerUrl, options);
     client.on('connect', () => { resolve(); });
-    this._mqttClient = client;
   });
   client.on('message', (topic, message) => {
     var triggers = this._triggers;
