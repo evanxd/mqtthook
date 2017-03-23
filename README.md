@@ -2,12 +2,6 @@
 It is a [MQTT][mqtt] version of [Webhook][webhook] for IoT devices. It helps MQTT-based IoT devices interact with real-world Web applications/services easier and faster with automation services (e.g. [IFTTT][ifttt], [Zapier][zapier], or others).
 
 ## How-to
-Run the below command to listen the `hooked-topic` topic to trigger the callback function. If the PM2.5 data bigger than 70 then print `PM2.5 is very high!` on the console.
-```sh
-node index.js
-```
-
-## Sample Code
 Initialize a MQTThook instance.
 ```js
 var MQTThook = require('mqtthook');

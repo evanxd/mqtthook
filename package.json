@@ -10,7 +10,6 @@
     "type": "git",
     "url": "https://github.com/evanxd/mqtthook"
   },
-  "main": "mqtthook.js",
   "keywords": [
     "iot",
     "internet-of-things",
