@@ -13,6 +13,7 @@ function MQTThook (brokerUrl, options) {
     var triggers = this._triggers;
     try {
       var data = JSON.parse(message.toString());
+      data = typeof data === 'object' ? data : {};
       if (triggers[topic] &&
           ((typeof triggers[topic].if === 'function' && triggers[topic].if(data)) ||
            (triggers[topic].if === undefined)) &&
