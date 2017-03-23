@@ -30,6 +30,7 @@ mqtthook.hook('hooked-topic')
 
 ## Reference
 - [MQTT][mqtt] is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol.
+- [Webhook][webhook] in web development is a method of augmenting or altering the behavior of a web page, or web application, with custom callbacks.
 
 [webhook]: https://en.wikipedia.org/wiki/Webhook
 [mqtt]: http://mqtt.org
