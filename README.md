@@ -2,8 +2,8 @@
 It is a [MQTT][mqtt] version of [Webhook][webhook] for IoT devices. It helps MQTT-based IoT devices interact with real-world Web applications/services easier and faster with automation services (e.g. [IFTTT][ifttt], [Zapier][zapier], or others).
 
 ## Demo
-![Demo](./images/demo.gif)
 Try the MQTThook example [here][mqtthook-example] and use the [Websocket-based MQTT client][mqtt-client] or build a real [air quality monitoring station][air-quality-monitoring-station] to trigger it.
+![Demo](./images/demo.gif)
 
 The code of the MQTThook example:
 ```js
