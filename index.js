@@ -46,6 +46,7 @@ MQTThook.prototype = {
   },
 
   trigger: function(callback) {
+    var that = this;
     var triggers = this._triggers;
     this._promise = this._promise.then((mqttTopic) => {
       return new Promise((resolve) => {
@@ -60,6 +61,9 @@ MQTThook.prototype = {
         resolve();
       });
     });
+    return {
+      hook: that.hook.bind(that),
+    };
   },
 
   _if: function(callback) {
