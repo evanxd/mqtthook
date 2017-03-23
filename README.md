@@ -26,4 +26,4 @@ mqtthook.hook('hooked-topic')
 [ifttt]: https://ifttt.com
 [zapier]: https://zapier.com
 [google-sheets]: https://www.google.com/intl/en/sheets/about/
-[mqtthook-example]: https://goo.gl/xR0z0a
+[mqtthook-example]: https://goo.gl/sdHkoM
