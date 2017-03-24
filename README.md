@@ -1,5 +1,5 @@
 # MQTThook
-It is a [MQTT][mqtt] version of [Webhook][webhook] for IoT devices. It helps MQTT-based IoT devices interact with real-world Web applications/services easier and faster with automation services (e.g. [IFTTT][ifttt], [Zapier][zapier], or others).
+It is a npm module to setup MQTThooks ([MQTT][mqtt] version of [Webhook][webhook]) for IoT devices. It helps MQTT-based IoT devices interact with real-world Web applications/services easier and faster with automation services (e.g. [IFTTT][ifttt], [Zapier][zapier], or others).
 
 ## Try It
 Go to the [RunKit page][mqtthook-example] to setup an example MQTThook and use the [Websocket-based MQTT client][mqtt-client] or build a real [air quality monitoring station][air-quality-monitoring-station] to trigger it.
