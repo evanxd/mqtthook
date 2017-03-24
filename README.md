@@ -1,8 +1,8 @@
 # MQTThook
 It is a [MQTT][mqtt] version of [Webhook][webhook] for IoT devices. It helps MQTT-based IoT devices interact with real-world Web applications/services easier and faster with automation services (e.g. [IFTTT][ifttt], [Zapier][zapier], or others).
 
-## Demo
-Try the MQTThook example [here][mqtthook-example] and use the [Websocket-based MQTT client][mqtt-client] or build a real [air quality monitoring station][air-quality-monitoring-station] to trigger it.
+## Try It
+Go to the [RunKit page][mqtthook-example] to setup an example MQTThook and use the [Websocket-based MQTT client][mqtt-client] or build a real [air quality monitoring station][air-quality-monitoring-station] to trigger it.
 ![Demo](./images/demo.gif)
 
 The code of the MQTThook example:
@@ -13,7 +13,7 @@ mqtthook.hook('hooked-topic')
   .trigger(data => { console.log(`PM2.5: ${data.pm2_5}`); });
 ```
 
-Please sent a JSON data with the format, like `{ "pm2_5": 17 }` to the `hooked-topic` topic on the `mqtt://test.mosquitto.org` broker to trigger the hook. It will show the PM2.5 value you send to.
+You can send a JSON data with the format `{ "pm2_5": 17 }` to the `hooked-topic` topic on the `mqtt://test.mosquitto.org` broker to trigger the MQTThook. The [RunKit page][mqtthook-example] will show the PM2.5 value you send to.
 
 ## How-to
 Initialize a MQTThook instance.
