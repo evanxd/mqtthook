@@ -37,7 +37,7 @@ mqtthook.hook('hooked-topic')
   });
 ```
 
-Trigger a MQTThook which will forward the PM2.5 data to another MQTT topic when a hooked MQTT topic received PM2.5 data.
+Trigger a MQTThook which will forward PM2.5 data to another MQTT topic when a hooked MQTT topic received the PM2.5 data.
 ```js
 mqtthook.hook('hooked-topic')
   .trigger((data) => {
