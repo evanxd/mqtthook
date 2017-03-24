@@ -10,7 +10,7 @@ The code of the MQTThook example:
 var MQTThook = require('mqtthook');
 var mqtthook = new MQTThook('mqtt://test.mosquitto.org');
 mqtthook.hook('hooked-topic')
-  .trigger(data => { console.log(`PM2.5: ${data.pm2_5}`); });
+  .trigger(data => { console.log(`PM2.5: ${data.pm2_5} μg/m3`); });
 ```
 
 You can send a JSON data with the format `{ "pm2_5": 17 }` to the `hooked-topic` topic on the `mqtt://test.mosquitto.org` broker to trigger the MQTThook. The [RunKit page][mqtthook-example] will show the PM2.5 value you send to.
@@ -38,6 +38,6 @@ mqtthook.hook('hooked-topic')
 [ifttt]: https://ifttt.com
 [zapier]: https://zapier.com
 [google-sheets]: https://www.google.com/intl/en/sheets/about/
-[mqtthook-example]: https://goo.gl/sdHkoM
+[mqtthook-example]: https://goo.gl/abgsTZ
 [mqtt-client]: http://www.hivemq.com/demos/websocket-client
 [air-quality-monitoring-station]: https://github.com/evanxd/air-quality-monitoring-station
