@@ -67,13 +67,13 @@ MQTThook.prototype = {
             triggers[mqttTopic].trigger = mqttTopic ? triggerMQTThook : triggerMQTThook();
           }
 
-          function triggerWebhook() {
-            request({ url: callback, qs: data }, error => {
+          function triggerWebhook(_data) {
+            request({ url: callback, qs: data || _data }, error => {
               error && console.error(error.message);
             });
           }
-          function triggerMQTThook() {
-            that._mqttClient.publish(callback, JSON.stringify(data), null, error => {
+          function triggerMQTThook(_data) {
+            that._mqttClient.publish(callback, JSON.stringify(data || _data), null, error => {
               error && console.error(error.message);
             });
           }

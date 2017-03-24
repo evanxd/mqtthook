@@ -31,18 +31,12 @@ mqtthook.hook('hooked-topic')
 
 Trigger a [WebHook][webhook] which will store the data in a [Google Sheets][google-sheets] sheet when a hooked MQTT topic received PM2.5 data.
 ```js
-mqtthook.hook('hooked-topic')
-  .trigger((data) => {
-    mqtthook.trigger('https://webhook.fake/hooks/3345678', { pm2_5: data.pm2_5 });
-  });
+mqtthook.hook('hooked-topic').trigger('https://webhook.fake/hooks/3345678');
 ```
 
 Trigger a MQTThook which will forward PM2.5 data to another MQTT topic when a hooked MQTT topic received the PM2.5 data.
 ```js
-mqtthook.hook('hooked-topic')
-  .trigger((data) => {
-    mqtthook.trigger('triggered-topic', { pm2_5: data.pm2_5 });
-  });
+mqtthook.hook('hooked-topic').trigger('triggered-topic');
 ```
 
 ## Reference
