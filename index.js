@@ -62,18 +62,18 @@ MQTThook.prototype = {
           // Trigger a Webhook.
           triggers[mqttTopic] = triggers[mqttTopic] || {};
           if (callback.startsWith('https://') || callback.startsWith('http://')) {
-            triggers[mqttTopic].trigger = mqttTopic ? triggerWebhook : triggerWebhook();
+            triggers[mqttTopic].trigger = mqttTopic ? triggerWebhook : triggerWebhook(data);
           } else { // Trigger a MQTThook in the same MQTT broker.
-            triggers[mqttTopic].trigger = mqttTopic ? triggerMQTThook : triggerMQTThook();
+            triggers[mqttTopic].trigger = mqttTopic ? triggerMQTThook : triggerMQTThook(data);
           }
 
-          function triggerWebhook(_data) {
-            request({ url: callback, qs: data || _data }, error => {
+          function triggerWebhook(data) {
+            request({ url: callback, qs: data }, error => {
               error && console.error(error.message);
             });
           }
-          function triggerMQTThook(_data) {
-            that._mqttClient.publish(callback, JSON.stringify(data || _data), null, error => {
+          function triggerMQTThook(data) {
+            that._mqttClient.publish(callback, JSON.stringify(data), null, error => {
               error && console.error(error.message);
             });
           }
