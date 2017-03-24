@@ -7,7 +7,7 @@ function MQTThook (brokerUrl, options = {}) {
   var client = mqtt.connect(brokerUrl, options.connection);
   this._mqttClient = client;
   this._triggers = {};
-  this._promise = new Promise((resolve, reject) => {
+  this._promise = new Promise(resolve => {
     client.on('connect', () => { resolve(); });
   });
   client.on('message', (topic, message) => {
@@ -35,7 +35,7 @@ MQTThook.prototype = {
   hook: function(mqttTopic) {
     var that = this;
     this._promise = this._promise.then(() => {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this._mqttClient.subscribe(mqttTopic);
         resolve(mqttTopic);
       });
@@ -50,7 +50,7 @@ MQTThook.prototype = {
     var that = this;
     var triggers = this._triggers;
     this._promise = this._promise.then((mqttTopic) => {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         if (typeof callback === 'function') {
           if (mqttTopic) {
             triggers[mqttTopic] = triggers[mqttTopic] || {};
@@ -90,7 +90,7 @@ MQTThook.prototype = {
     var that = this;
     var triggers = this._triggers;
     this._promise = this._promise.then((mqttTopic) => {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         if (typeof callback === 'function') {
           triggers[mqttTopic] = triggers[mqttTopic] || {};
           triggers[mqttTopic].if = callback;
