@@ -1,7 +1,7 @@
 {
   "name": "mqtthook",
   "description": "It is a MQTT version of Webhook for IoT devices.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": {
     "name": "Evan Tseng",
     "email": "evan@tseng.io"
