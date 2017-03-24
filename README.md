@@ -10,7 +10,7 @@ The code of the MQTThook example:
 var MQTThook = require('mqtthook');
 var mqtthook = new MQTThook('mqtt://test.mosquitto.org');
 mqtthook.hook('hooked-topic')
-  .trigger(data => { console.log(`PM2.5: ${data.pm2_5} μg/m3`); });
+        .trigger(data => { console.log(`PM2.5: ${data.pm2_5} μg/m3`); });
 ```
 
 You can send a JSON data with the format `{ "pm2_5": 17 }` to the `hooked-topic` topic on the `mqtt://test.mosquitto.org` broker to trigger the MQTThook. The [RunKit page][mqtthook-example] will show the PM2.5 value you send to.
@@ -25,8 +25,8 @@ var mqtthook = new MQTThook('mqtt://test.mosquitto.org');
 Trigger a callback `function` to print the PM2.5 data on the console when a hooked MQTT topic received the data.
 ```js
 mqtthook.hook('hooked-topic')
-  .if(data => { return data.pm2_5 > 70 })
-  .trigger(data => { console.log(`PM2.5: ${data.pm2_5} μg/m3`); });
+        .if(data => { return data.pm2_5 > 70 })
+        .trigger(data => { console.log(`PM2.5: ${data.pm2_5} μg/m3`); });
 ```
 
 Trigger a [WebHook][webhook] which will store the data in a [Google Sheets][google-sheets] sheet when a hooked MQTT topic received PM2.5 data.
