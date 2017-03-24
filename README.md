@@ -26,7 +26,23 @@ Trigger a callback `function` to print the PM2.5 data on the console when a hook
 ```js
 mqtthook.hook('hooked-topic')
   .if(data => { return data.pm2_5 > 70 })
-  .trigger(data => { console.log(`PM2.5: ${data.pm2_5}`); });
+  .trigger(data => { console.log(`PM2.5: ${data.pm2_5} μg/m3`); });
+```
+
+Trigger a [WebHook][webhook] which will store the data in a [Google Sheets][google-sheets] sheet when a hooked MQTT topic received PM2.5 data.
+```js
+mqtthook.hook('hooked-topic')
+  .trigger((data) => {
+    mqtthook.trigger('https://webhook.fake/hooks/3345678', { pm2_5: data.pm2_5 });
+  });
+```
+
+Trigger a MQTThook which will forward the PM2.5 data to another MQTT topic when a hooked MQTT topic received PM2.5 data.
+```js
+mqtthook.hook('hooked-topic')
+  .trigger((data) => {
+    mqtthook.trigger('triggered-topic', { pm2_5: data.pm2_5 });
+  });
 ```
 
 ## Reference
