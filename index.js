@@ -1,6 +1,7 @@
 'use strict';
 
 var mqtt = require('mqtt');
+var request = require('request');
 
 function MQTThook (brokerUrl, options) {
   var client = mqtt.connect(brokerUrl, options);
@@ -45,7 +46,7 @@ MQTThook.prototype = {
     };
   },
 
-  trigger: function(callback) {
+  trigger: function(callback, data) {
     var that = this;
     var triggers = this._triggers;
     this._promise = this._promise.then((mqttTopic) => {
@@ -56,6 +57,25 @@ MQTThook.prototype = {
             triggers[mqttTopic].trigger = callback;
           } else {
             callback();
+          }
+        } else if (typeof callback === 'string') {
+          // Trigger a Webhook.
+          triggers[mqttTopic] = triggers[mqttTopic] || {};
+          if (callback.startsWith('https://') || callback.startsWith('http://')) {
+            triggers[mqttTopic].trigger = mqttTopic ? triggerWebhook : triggerWebhook();
+          } else { // Trigger a MQTThook in the same MQTT broker.
+            triggers[mqttTopic].trigger = mqttTopic ? triggerMQTThook : triggerMQTThook();
+          }
+
+          function triggerWebhook() {
+            request({ url: callback, qs: data }, error => {
+              error && console.error(error.message);
+            });
+          }
+          function triggerMQTThook() {
+            that._mqttClient.publish(callback, JSON.stringify(data), null, error => {
+              error && console.error(error.message);
+            });
           }
         }
         resolve();

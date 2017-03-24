@@ -20,6 +20,7 @@
     "webhook"
   ],
   "dependencies": {
-    "mqtt": "2.5.0"
+    "mqtt": "2.5.0",
+    "request": "2.81.0"
   }
 }
